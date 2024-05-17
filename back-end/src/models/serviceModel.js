@@ -9,7 +9,6 @@ const bookingSchema = mongoose.Schema({
     services: [{
         service_id:{
             type:mongoose.Schema.Types.ObjectId,
-            // ref:"Service"
         },
         name: {
             type: String,

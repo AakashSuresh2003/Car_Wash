@@ -100,4 +100,25 @@ const deleteService = async (req, res) => {
   }
 };
 
-module.exports = { addService, updateService, deleteService, getAllServices };
+
+const placeFilter = async (req, res) => {
+  try {
+      const { place } = req.query;
+
+      const query = {};
+      if (place) {
+          query.place = place;
+      }
+
+      const filteredServices = await Service.find(query);
+
+      res.status(200).json(filteredServices);
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal Server Error" });
+  }
+}
+
+
+module.exports = { addService, updateService, deleteService, getAllServices , placeFilter};
+
